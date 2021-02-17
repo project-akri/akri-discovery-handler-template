@@ -1,12 +1,13 @@
-use akri_discovery_utils::discovery::v0::{
+use akri_discovery_utils::discovery::{
+    DiscoverStream,
+    v0::{
     discovery_server::Discovery, Device, DiscoverRequest, DiscoverResponse,
-};
+}};
 use async_trait::async_trait;
 use tokio::sync::mpsc;
 use tonic::{Response, Status};
 
-pub type DiscoverStream = mpsc::Receiver<Result<DiscoverResponse, Status>>;
-
+/// DiscoveryHandler implements Akri's Discovery Service.
 pub struct DiscoveryHandler {
     shutdown_sender: Option<tokio::sync::mpsc::Sender<()>>,
 }

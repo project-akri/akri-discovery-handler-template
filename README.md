@@ -1,1 +1,2 @@
-# akri-discovery-handler-template
+# Akri Discovery Handler Template
+
