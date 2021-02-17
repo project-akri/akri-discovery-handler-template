@@ -1,0 +1,1 @@
+# akri-discovery-handler-template
