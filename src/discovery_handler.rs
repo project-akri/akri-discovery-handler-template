@@ -9,12 +9,12 @@ use tonic::{Response, Status};
 
 /// DiscoveryHandler implements Akri's Discovery Service.
 pub struct DiscoveryHandler {
-    shutdown_sender: Option<tokio::sync::mpsc::Sender<()>>,
+    register_sender: Option<tokio::sync::mpsc::Sender<()>>,
 }
 
 impl DiscoveryHandler {
-    pub fn new(shutdown_sender: Option<tokio::sync::mpsc::Sender<()>>) -> Self {
-        DiscoveryHandler { shutdown_sender }
+    pub fn new(register_sender: Option<tokio::sync::mpsc::Sender<()>>) -> Self {
+        DiscoveryHandler { register_sender }
     }
 }
 
