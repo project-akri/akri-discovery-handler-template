@@ -10,7 +10,7 @@ use discovery_handler::DiscoveryHandler;
 async fn main() -> Result<(), Box<dyn std::error::Error + Send + Sync + 'static>> {
     // Specify the name of this discovery handler. A discovery handler is usually, but not necessarily, identified by
     // the protocol it uses.
-    let name = "protocol";
+    let name = "todo";
     // Specify whether the devices discovered by this discovery handler are locally attached (or embedded) to nodes or are
     // network based and usable by multiple nodes.
     let is_local = false;
@@ -26,7 +26,7 @@ async fn main() -> Result<(), Box<dyn std::error::Error + Send + Sync + 'static>
     // Run the discovery server.
     let discovery_handle = tokio::spawn(async move {
         run_discovery_server(
-            DiscoveryHandler::new(Some(register_sender)),
+            DiscoveryHandler::new(register_sender),
             &endpoint_clone,
         )
         .await
