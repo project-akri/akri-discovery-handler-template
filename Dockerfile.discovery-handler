@@ -2,14 +2,14 @@ FROM amd64/rust:1.47 as build
 RUN rustup component add rustfmt --toolchain 1.47.0-x86_64-unknown-linux-gnu
 RUN USER=root cargo new --bin dh
 WORKDIR /dh
-
 COPY ./Cargo.toml ./Cargo.toml
-RUN cargo build --release
-RUN rm ./src/*.rs
-RUN rm ./target/release/deps/{{project-name}}*
-COPY . .
+RUN cargo build --release && \
+    rm ./src/*.rs && \
+    DEP_PATH=`echo "./target/release/deps/{{project-name}}*" | tr - _` && \
+    rm $DEP_PATH
+COPY ./src ./src
 RUN cargo build --release
 
-COPY ./target/release/{{project-name}} /{{project-name}}
-
+FROM amd64/debian:buster-slim
+COPY --from=build /dh/target/release/{{project-name}} /{{project-name}}
 ENTRYPOINT ["/{{project-name}}"]
