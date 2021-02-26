@@ -11,5 +11,8 @@ COPY ./src ./src
 RUN cargo build --release
 
 FROM amd64/debian:buster-slim
+RUN apt-get update && \
+    apt-get install -y --no-install-recommends libssl-dev && \
+    apt-get clean
 COPY --from=build /dh/target/release/{{project-name}} /{{project-name}}
 ENTRYPOINT ["/{{project-name}}"]
