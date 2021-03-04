@@ -1,25 +1,23 @@
 use akri_discovery_utils::discovery::{
+    v0::{discovery_handler_server::DiscoveryHandler, Device, DiscoverRequest, DiscoverResponse},
     DiscoverStream,
-    v0::{
-    discovery_server::Discovery, Device, DiscoverRequest, DiscoverResponse,
-}};
+};
 use async_trait::async_trait;
 use tokio::sync::mpsc;
 use tonic::{Response, Status};
 
-/// DiscoveryHandler implements Akri's Discovery Service.
-pub struct DiscoveryHandler {
+pub struct DiscoveryHandlerImpl {
     register_sender: tokio::sync::mpsc::Sender<()>,
 }
 
-impl DiscoveryHandler {
+impl DiscoveryHandlerImpl {
     pub fn new(register_sender: tokio::sync::mpsc::Sender<()>) -> Self {
-        DiscoveryHandler { register_sender }
+        DiscoveryHandlerImpl { register_sender }
     }
 }
 
 #[async_trait]
-impl Discovery for DiscoveryHandler {
+impl DiscoveryHandler for DiscoveryHandlerImpl {
     type DiscoverStream = DiscoverStream;
     async fn discover(
         &self,
