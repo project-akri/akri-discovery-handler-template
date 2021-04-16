@@ -20,6 +20,6 @@ async fn main() -> Result<(), Box<dyn std::error::Error + Send + Sync + 'static>
     // This function will register the DiscoveryHandler with the Agent's registration socket 
     // and serve its discover service over UDS at the socket path 
     // `format!("{}/{}.sock"), env::var("DISCOVERY_HANDLERS_DIRECTORY"), name)`. 
-    run_discovery_handler(discovery_handler, register_receiver, name, is_local).await?;
+    run_discovery_handler(discovery_handler, register_receiver, name, shared).await?;
     Ok(())
 }
