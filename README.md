@@ -1,5 +1,5 @@
 # Akri Discovery Handler Template
-A template for accelerating creating a Discovery Handler for Akri in Rust. 
+A template for accelerating creating a Discovery Handler for [Akri](https://github.com/deislabs/akri) in Rust. 
 
 ## About
 A Discovery Handler is anything that implements Akri's the `Discover` service and `Registration` client defined in
@@ -11,9 +11,12 @@ This can be done in any language using Akri's proto file. This template creates 
 ## Use `cargo generate` to clone this template
 This template is pulled via the [`cargo-generate`](https://github.com/cargo-generate/cargo-generate) developer tool.
 1. Install `cargo-generate` `cargo install cargo-generate`
-2. Pull down this template `cargo generate --git https://github.com/kate-goldenring/akri-discovery-handler-template.git`
-3. Fill in the [`discover`](src/discovery_handler.rs) logic of your Discovery Handler
-4. Build the Discovery Handler and push it to your container registry (assumed GHCR below):
+1. Pull down this template `cargo generate --git https://github.com/kate-goldenring/akri-discovery-handler-template.git`
+1. In [`main`](src/main.rs), specify the name of your Discovery Handler and whether or not the devices it discovers are
+   shared. This name should match `custom.configuration.discoveryHandlerName` when installing Akri, so the Agent
+   correctly identifies the Discovery Handler.
+1. Fill in the [`discover`](src/discovery_handler.rs) logic of your Discovery Handler
+1. Build the Discovery Handler and push it to your container registry (assumed GHCR below):
     ```sh
     HOST="ghcr.io"
     USER=[[GITHUB-USER]]
@@ -29,7 +32,7 @@ This template is pulled via the [`cargo-generate`](https://github.com/cargo-gene
     . && \
     docker push ${DH_IMAGE_TAGGED}
     ```
-5. Deploy Akri with your custom Discovery Handler
+1. Deploy Akri with your custom Discovery Handler
     ```sh
     helm repo add akri-helm-charts https://deislabs.github.io/akri/
     helm install akri akri-helm-charts/akri-dev \
