@@ -1,5 +1,5 @@
-FROM amd64/rust:1.47 as build
-RUN rustup component add rustfmt --toolchain 1.47.0-x86_64-unknown-linux-gnu
+FROM amd64/rust:1.54 as build
+RUN rustup component add rustfmt --toolchain 1.54.0-x86_64-unknown-linux-gnu
 RUN USER=root cargo new --bin dh
 WORKDIR /dh
 COPY ./Cargo.toml ./Cargo.toml
