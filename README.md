@@ -1,9 +1,9 @@
 # Akri Discovery Handler Template
-A template for accelerating creating a Discovery Handler for [Akri](https://github.com/deislabs/akri) in Rust. 
+A template for accelerating creating a Discovery Handler for [Akri](https://github.com/project-akri/akri) in Rust. 
 
 ## About
 A Discovery Handler is anything that implements Akri's the `Discover` service and `Registration` client defined in
-Akri's [discovery gRPC interface](https://github.com/deislabs/akri/blob/main/discovery-utils/proto/discovery.proto).
+Akri's [discovery gRPC interface](https://github.com/project-akri/akri/blob/main/discovery-utils/proto/discovery.proto).
 This can be done in any language using Akri's proto file. This template creates a `DiscoveryHandler` that implements the
 `Discover` service and registers it with the Akri Agent.
 
@@ -34,7 +34,7 @@ This template is pulled via the [`cargo-generate`](https://github.com/cargo-gene
     ```
 1. Deploy Akri with your custom Discovery Handler
     ```sh
-    helm repo add akri-helm-charts https://deislabs.github.io/akri/
+    helm repo add akri-helm-charts https://project-akri.github.io/akri/
     helm install akri akri-helm-charts/akri-dev \
     --set imagePullSecrets[0].name="crPullSecret" \
     --set custom.discovery.enabled=true  \
