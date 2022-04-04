@@ -6,7 +6,7 @@ edition = "2018"
 
 [dependencies]
 # TODO: Change this to Akri main when the library is merged
-akri-discovery-utils = { git = "https://github.com/deislabs/akri", branch = "main", package = "akri-discovery-utils" }
+akri-discovery-utils = { git = "https://github.com/project-akri/akri", branch = "main", package = "akri-discovery-utils" }
 async-trait = "0.1.0"
 tokio = { version = "1.0.1", features = ["time", "net", "sync"] }
 tonic = { version = "0.5.2", features = ["tls"] }
