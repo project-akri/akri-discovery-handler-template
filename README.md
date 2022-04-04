@@ -1,9 +1,9 @@
 # Akri Discovery Handler Template
-A template for accelerating creating a Discovery Handler for [Akri](https://github.com/deislabs/akri) in Rust. 
+A template for accelerating creating a Discovery Handler for [Akri](https://github.com/project-akri/akri) in Rust. 
 
 ## About
 A Discovery Handler is anything that implements Akri's the `Discover` service and `Registration` client defined in
-Akri's [discovery gRPC interface](https://github.com/deislabs/akri/blob/main/discovery-utils/proto/discovery.proto).
+Akri's [discovery gRPC interface](https://github.com/project-akri/akri/blob/main/discovery-utils/proto/discovery.proto).
 This can be done in any language using Akri's proto file. This template creates a `DiscoveryHandler` that implements the
 `Discover` service and registers it with the Akri Agent.
 
@@ -11,7 +11,7 @@ This can be done in any language using Akri's proto file. This template creates 
 ## Use `cargo generate` to clone this template
 This template is pulled via the [`cargo-generate`](https://github.com/cargo-generate/cargo-generate) developer tool.
 1. Install `cargo-generate` `cargo install cargo-generate`
-1. Pull down this template `cargo generate --git https://github.com/kate-goldenring/akri-discovery-handler-template.git`
+1. Pull down this template `cargo generate --git https://github.com/project-akri/akri-discovery-handler-template.git`
 1. In [`main`](src/main.rs), specify the name of your Discovery Handler and whether or not the devices it discovers are
    shared. This name should match `custom.configuration.discoveryHandlerName` when installing Akri, so the Agent
    correctly identifies the Discovery Handler.
