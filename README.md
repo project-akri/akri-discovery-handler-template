@@ -34,7 +34,7 @@ This template is pulled via the [`cargo-generate`](https://github.com/cargo-gene
     ```
 1. Deploy Akri with your custom Discovery Handler
     ```sh
-    helm repo add akri-helm-charts https://deislabs.github.io/akri/
+    helm repo add akri-helm-charts https://project-akri.github.io/akri/
     helm install akri akri-helm-charts/akri-dev \
     --set imagePullSecrets[0].name="crPullSecret" \
     --set custom.discovery.enabled=true  \
